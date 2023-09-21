@@ -18,7 +18,7 @@ public class Palindrome {
     public static String solution(String str){
         String answer;
         String reverse = new StringBuilder(str).reverse().toString();
-        if((str + reverse).equals((reverse + str))) answer = "YES";
+        if(str.equals(reverse)) answer = "YES";
         else answer = "NO";
         return answer;
     }
