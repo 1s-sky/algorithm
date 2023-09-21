@@ -29,5 +29,6 @@ public class IsInteger {
         Scanner kb = new Scanner(System.in);
         String input = kb.next();
         System.out.println(solution(input));
+        kb.close();
     }
 }
