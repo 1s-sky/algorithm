@@ -21,25 +21,25 @@ public class LengthBtwLetter {
         return iAry[0];
     }
     public static String solution(String str, char t) {
-        char[] cAry = str.toCharArray();
         StringBuilder answer = new StringBuilder();
         int[] iAry;
         Vector<Integer> indexV = new Vector<>();
+        //각 문자 t의 index를 Vector에 담는다.
         for(int i=0; i<str.length(); i++){
             if(str.charAt(i) == t) indexV.add(i); 
         }
-
+        //Vector크기만한 int배열 생성
         iAry = new int[indexV.size()];
 
         for(int i=0; i<str.length(); i++){
             for(int j=0; j<indexV.size(); j++){
-                iAry[j] = Math.abs(i-indexV.get(j));
+                //각 문자 t와의 거리를 iAry에 담는다.
+                iAry[j] = Math.abs(i-indexV.get(j));  
             }
+            //iAry의 최솟값을 answer에 넣는다.
             answer.append(Character.forDigit(min(iAry),10));
             answer.append(' ');
         }
-
-
         return answer.toString();
     }
     public static void main(String[] args) {
@@ -47,7 +47,6 @@ public class LengthBtwLetter {
         String str = kb.next();
         char t = kb.next().charAt(0);
         System.out.println(solution(str, t));
+        kb.close();
     }
-    
-
 }
