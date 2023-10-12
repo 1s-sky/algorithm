@@ -24,8 +24,8 @@ public class RockPaperScissors {
                 ary[i][j] = kb.nextInt();
             }
         }
-        for(int i=0; i<n; i++){
-            System.out.println(solution(n, ary)[i]);
+        for(char c: solution(n, ary)){
+            System.out.println(c);
         }
         kb.close();
     }
