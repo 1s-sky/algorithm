@@ -19,6 +19,7 @@ public class BiggerThanFront{
             nums[i] = kb.nextInt();
         }
         System.out.println(solution(n, nums));
+        kb.close();
     }    
 
 }
