@@ -1,32 +1,18 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SumArr {
-    public static String solution(int n, int m, int[] nAry, int[] mAry){
-        StringBuilder answer = new StringBuilder();
-        int[] rAry = new int[n+m];
-        for(int i=0; i<n; i++){
-            rAry[i] = nAry[i];
-        }
-        for(int i=0; i<m; i++){
-            rAry[i+n] = mAry[i];
-        }
+    public static ArrayList<Integer> solution(int n, int m, int[] nAry, int[] mAry){
+        int p1 = 0, p2 = 0;
+        ArrayList<Integer> answer = new ArrayList<>();
 
-        //버블 정렬
-        for(int i=0; i<n+m; i++){
-            for(int j=i+1; j<n+m; j++){
-                if(rAry[i] > rAry[j]){
-                    //swap
-                    int temp = rAry[i];
-                    rAry[i] = rAry[j];
-                    rAry[j] = temp;
-                }
-            }
+        while(p1<n && p2<m) {
+            if(nAry[p1] < mAry[p2]) answer.add(nAry[p1++]);
+            else answer.add(mAry[p2++]);
         }
-
-        for(int x : rAry){
-            answer.append(x).append(' ');
-        }
-        return answer.toString();
+        while(p1<n) answer.add(nAry[p1++]);
+        while(p2<m) answer.add(mAry[p2++]);
+        return answer;
     }
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
@@ -41,6 +27,6 @@ public class SumArr {
             mAry[i] = kb.nextInt();
         }
         kb.close();
-        System.out.println(solution(n,m,nAry,mAry));
+        for(int x : solution(n,m,nAry,mAry)) { System.out.print(x+" ");}
     }
 }
