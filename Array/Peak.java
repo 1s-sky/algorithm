@@ -3,10 +3,18 @@ import java.util.Scanner;
 public class Peak {
     public static int solution(int n, int[][] nAry){
         int answer = 0;
+        int[] dx = {-1, 0, 1, 0};
+        int[] dy = {0, -1, 0, 1};
+
         for(int i=1; i<=n; i++){
             for(int j=1; j<=n; j++){
-                if(nAry[i][j] > nAry[i-1][j] && nAry[i][j] > nAry[i+1][j] 
-                && nAry[i][j] > nAry[i][j-1] && nAry[i][j] > nAry[i][j+1]) answer++;
+                boolean flag = true;
+                for(int k=0; k<4; k++){
+                    int nx = i+dx[k];
+                    int ny = j+dy[k];
+                    if(nAry[i][j] <= nAry[nx][ny]) { flag = false; break;}
+                }
+                if(flag) answer++;
             }
         }
         return answer;
