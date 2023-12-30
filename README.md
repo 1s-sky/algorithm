@@ -12,3 +12,18 @@
 #### 10. [문자사이 최단거리](https://github.com/1s-sky/algorithm/blob/main/String/readme/10.LengthBtwLetter.md)
 #### 11. [문자열 압축](https://github.com/1s-sky/algorithm/blob/main/String/readme/11.StringCompression.md)
 #### 12. [암호](https://github.com/1s-sky/algorithm/blob/main/String/readme/12.Code.md)
+
+<br>
+
+## Array
+#### 1. [더 큰 수 출력하기](https://github.com/1s-sky/algorithm/blob/main/Array/readme/1.BiggerThanFront.md)
+#### 2. [보이는 학생](https://github.com/1s-sky/algorithm/blob/main/Array/readme/2.TallerStudent.md)
+#### 3. [가위바위보](https://github.com/1s-sky/algorithm/blob/main/Array/readme/3.RockPaperScissors.md)
+#### 4. [피보나치 수열](https://github.com/1s-sky/algorithm/blob/main/Array/readme/4.Fibonacci.md)
+#### 5. [소수](https://github.com/1s-sky/algorithm/blob/main/Array/readme/5.PrimeNum.md)
+#### 6. [뒤집은 소수](https://github.com/1s-sky/algorithm/blob/main/Array/readme/6.ReversePrime.md)
+#### 7. [점수 계산](https://github.com/1s-sky/algorithm/blob/main/Array/readme/7.Score.md)
+#### 8. [등수 구하기](https://github.com/1s-sky/algorithm/blob/main/Array/readme/8.Ranking.md)
+#### 9. [격자판 최대합](https://github.com/1s-sky/algorithm/blob/main/Array/readme/9.GridSum.md)
+#### 10. [봉우리](https://github.com/1s-sky/algorithm/blob/main/Array/readme/10.Peak.md)
+#### 11. [임시반장 정하기](https://github.com/1s-sky/algorithm/blob/main/Array/readme/11.SelectLeader.md)
