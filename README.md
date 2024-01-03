@@ -1,3 +1,12 @@
+# Algorithm
+n < 100 => 적당한 3중 Loop까지 가능
+
+n < 1000 => 2중 Loop까지 가능
+
+n < 10000 => O(n)
+
+<br>
+
 ## String
 
 #### 1. [문자찾기](https://github.com/1s-sky/algorithm/blob/main/String/readme/1.SearchChar.md)
