@@ -6,7 +6,6 @@ public class ContinuousSeqMax {
     public static int solution(int k, int[] arr){
         ArrayList<Integer> arr0 = new ArrayList<>();
         int answer = 0;
-        int temp;
 
         for (int i = 0; i<arr.length; i++) {
             if(arr[i] == 0) arr0.add(i);
