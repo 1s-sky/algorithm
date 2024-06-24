@@ -3,28 +3,26 @@ import java.util.Scanner;
 public class LeastRecentlyUsed {
     public static int[] solution(int[] cache, int[] work){
         for(int i=0; i<work.length; i++){
-            int flag = 0;
+            int pos = -1;
             for(int j=0; j<cache.length; j++){
-                //캐시에 있다면, 앞으로 당겨오기
                 if(work[i] == cache[j]) {
-                    flag = 1;
-                    for(int k=j; k>0; k--){
-                        int temp = cache[k];
-                        cache[k] = cache[k-1];
-                        cache[k-1] = temp;
-                    }
+                    pos = j;
                     break;
                 }
             }
-            //캐시에 없다면, 마지막꺼 버리기
-            if(flag == 0) {
+            //캐시에 없다면, 끝까지 밀기
+            if(pos == -1) {
                 for(int k=cache.length-1; k>0; k--){
-                    int temp = cache[k];
                     cache[k] = cache[k-1];
-                    cache[k-1] = temp;
                 }
-                cache[0] = work[i];
             }
+            //캐시에 있다면, 인덱스까지만 밀기
+            else{
+                for(int k=pos; k>0; k--){
+                    cache[k] = cache[k-1];
+                }
+            }
+            cache[0] = work[i];
         }
 
         return cache;
