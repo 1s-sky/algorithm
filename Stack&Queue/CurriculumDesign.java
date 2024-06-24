@@ -26,6 +26,7 @@ public class CurriculumDesign {
         Scanner kb = new Scanner(System.in);
         String check = kb.next();
         String str = kb.next();
+        kb.close();
 
         if(solution(check, str)) System.out.println("YES");
         else System.out.println("NO");
