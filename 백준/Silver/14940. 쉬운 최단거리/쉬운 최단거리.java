@@ -1,59 +1,64 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class Main{
     private final static int[] DX = { 1, 0, -1, 0 };
-    private final static int[] DY = { 0, -1, 0, 1 };
-    private static int[][] map, distance;
-    private static int m, n;
-    private static boolean[][] isVisited;
+    private final static int[] DY = { 0, 1, 0, -1 };
     
+    private static int[][] map;
+    private static int[][] answer;
+    private static boolean[][] visit;
+    private static int n, m;
+
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder builder = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] str = br.readLine().split(" ");
+        StringBuilder sb = new StringBuilder();
+        n = Integer.parseInt(str[0]);
+        m = Integer.parseInt(str[1]);
         boolean isStartChecked = false;
-        String[] size = reader.readLine().split(" ");
-        n = Integer.parseInt(size[0]);
-        m = Integer.parseInt(size[1]);
         int startX = -1, startY = -1;
         
         map = new int[n][m];
-        distance = new int[n][m];
-        isVisited = new boolean[n][m];
+        answer = new int[n][m];
+        visit = new boolean[n][m];
         
-        for (int i = 0; i < n; i++) {
-            map[i] = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-            if (!isStartChecked) 
-                for (int j = 0; j < m; j++) 
-                    if (map[i][j] == 2) {
+        for(int i=0; i<n; i++){
+            map[i] = Arrays.stream(br.readLine().split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+            
+            if(!isStartChecked){
+                for(int j=0; j<m; j++){
+                    if(map[i][j] == 2){
                         isStartChecked = true;
                         startX = i;
                         startY = j;
                         break;
                     }
+                }
+            }
         }
         
         bfs(startX, startY);
         
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) 
-                if (!isVisited[i][j] && map[i][j] == 1)
-                    builder.append(-1 + " ");
-                else 
-                    builder.append(distance[i][j] + " ");
-            builder.append("\n");
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(!visit[i][j] && map[i][j] == 1) sb.append(-1 + " ");
+                else sb.append(answer[i][j] + " ");
+            }
+            sb.append("\n");
         }
-        
-        System.out.print(builder.toString());
+        System.out.print(sb.toString());
     }
     
     private static void bfs(int x, int y) {
-        Queue<Point> queue = new LinkedList<>();
-        queue.add(new Point(x, y));
-        isVisited[x][y] = true;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(new Node(x, y));
+        visit[x][y] = true;
         
         while (!queue.isEmpty()) {
-            Point current = queue.poll();
+            Node current = queue.poll();
 
             for (int i = 0; i < 4; i++) {
                 int nextX = current.x + DX[i];
@@ -61,20 +66,20 @@ public class Main {
                 
                 if (nextX < 0 || nextY < 0 || nextX >= n || nextY >= m) continue;
                 if (map[nextX][nextY] == 0) continue;
-                if (isVisited[nextX][nextY]) continue;
+                if (visit[nextX][nextY]) continue;
 
-                queue.add(new Point(nextX, nextY));
-                distance[nextX][nextY] = distance[current.x][current.y] + 1;
-                isVisited[nextX][nextY] = true;
+                queue.add(new Node(nextX, nextY));
+                answer[nextX][nextY] = answer[current.x][current.y] + 1;
+                visit[nextX][nextY] = true;
             }
         }
     }
 }
 
-class Point {
+class Node{
     public int x, y;
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Node(int a, int b) {
+        x = a;
+        y = b;
     }
 }
