@@ -28,7 +28,10 @@ public class Main{
             lan[i] = Integer.parseInt(br.readLine()); 
         }
                 
-        lt = 1;        
+        if(Arrays.stream(lan).max().getAsInt() >= n){
+            lt = Arrays.stream(lan).max().getAsInt() / n;
+        }
+        else lt = 1;      
         rt = Arrays.stream(lan).max().getAsInt();
         
         while(lt<=rt){
