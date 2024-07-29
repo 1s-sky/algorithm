@@ -50,6 +50,7 @@ public class Main{
 
             if (!isRight) sb.append("error" + "\n");
             else {
+                //size가 0인지 체크
                 if(deque.isEmpty()){
                     sb.append("[]").append("\n");
                     continue;
