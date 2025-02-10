@@ -1,29 +1,25 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main{
-    public static void main(String args[]) throws IOException{
+    public static void main(String[] args) throws IOException {        
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Stack<Character> stack = new Stack<>();
         String str = br.readLine();
-        int count = 0;
+        int answer = 0, level = 0;
         char before = ' ';
 
         for(char c : str.toCharArray()){
-            if(c == '(') {  //'('일 때
-                stack.push('(');
+            if (c == '(') {
+                level++;
             }
-            else {  //')'일 때
-                stack.pop();
-                if(before == '('){  //()이면 레이저
-                    count += stack.size();
-                }
-                else{               //쇠막대기 끝
-                    count++;
-                }
+            else {
+                level--;
+                if (before == '(') answer += level;
+                else answer++;
             }
+
             before = c;
         }
-        System.out.println(count);
+        System.out.println(answer);
     }
 }
