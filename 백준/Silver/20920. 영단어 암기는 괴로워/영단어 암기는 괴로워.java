@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -28,18 +27,11 @@ public class Main {
 
                 int valueCompare = o2.getValue().compareTo(o1.getValue());
 
-                if (valueCompare != 0) { //o2가 크면 양수 -> 순서 바꿔야할때
+                if (valueCompare != 0) { 
                     return valueCompare; 
                 }
                 
                 return Integer.compare(o2.getKey().length(), o1.getKey().length());
-                // int lengthCompare = Integer.compare(o2.getKey().length(), o1.getKey().length());
-
-                // if (lengthCompare != 0) { //o2가 크면 양수 -> 순서 바꿔야할때
-                    // return lengthCompare; 
-                // }
-                
-                // return o1.getKey().compareTo(o2.getKey());
             }
         });
 
