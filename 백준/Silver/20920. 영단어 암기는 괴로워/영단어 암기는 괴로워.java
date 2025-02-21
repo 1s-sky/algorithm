@@ -32,13 +32,14 @@ public class Main {
                     return valueCompare; 
                 }
                 
-                int lengthCompare = Integer.compare(o2.getKey().length(), o1.getKey().length());
+                return Integer.compare(o2.getKey().length(), o1.getKey().length());
+                // int lengthCompare = Integer.compare(o2.getKey().length(), o1.getKey().length());
 
-                if (lengthCompare != 0) { //o2가 크면 양수 -> 순서 바꿔야할때
-                    return lengthCompare; 
-                }
+                // if (lengthCompare != 0) { //o2가 크면 양수 -> 순서 바꿔야할때
+                    // return lengthCompare; 
+                // }
                 
-                return o1.getKey().compareTo(o2.getKey());
+                // return o1.getKey().compareTo(o2.getKey());
             }
         });
 
