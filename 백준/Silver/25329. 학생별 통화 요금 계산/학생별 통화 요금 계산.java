@@ -14,7 +14,7 @@ public class Main {
             String[] timeStr = st.nextToken().split(":");
             int hour = Integer.parseInt(timeStr[0]);
             int minute = Integer.parseInt(timeStr[1]);
-            int time = hour*60 + minute;
+            int time = hour * 60 + minute;
             String name = st.nextToken();
 
             stuTime.put(name, stuTime.getOrDefault(name, 0)+time);
@@ -22,23 +22,21 @@ public class Main {
 
         //요금 계산
         for(String student : stuTime.keySet()){
-            int totTime = stuTime.get(student);
+            double totTime = stuTime.get(student);
             if(totTime > 100) {
-                stuMoney.put(student, 10 + (int)Math.ceil(((double)(totTime - 100))/50)*3);
+                stuMoney.put(student, 10 + (int)Math.ceil((totTime - 100)/50)*3);
             }
             else stuMoney.put(student, 10);
         }
 
+        //Sort 재정의
         List<Map.Entry<String, Integer>> mapList = new ArrayList<>(stuMoney.entrySet());
     
-        mapList.sort(new Comparator<>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2){
-                if (o2.getValue().compareTo(o1.getValue()) == 0) {  //같으면 이름으로도 비교
-                    return o1.getKey().compareTo(o2.getKey());
-                }
-                return o2.getValue().compareTo(o1.getValue());
+        mapList.sort((o1, o2) -> {
+            if (o2.getValue().compareTo(o1.getValue()) == 0) {  //같으면 이름으로도 비교
+                return o1.getKey().compareTo(o2.getKey());
             }
+            return o2.getValue().compareTo(o1.getValue());
         });
 
         for(Map.Entry<String, Integer> entry : mapList){
