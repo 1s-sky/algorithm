@@ -25,6 +25,7 @@ public class Main{
             long sum = 0;
             for(int j=0; j<n; j++){
                 sum += trees[j] > mid ? trees[j] - mid : 0;
+                if (sum >= m) break;
             }
 
             if (sum >= m) {
