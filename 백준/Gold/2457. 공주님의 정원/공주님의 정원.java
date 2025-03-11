@@ -33,31 +33,28 @@ public class Main {
         Arrays.sort(garden, (o1, o2)-> o1.start - o2.start);
 
         if (garden[0].start > 301) {
-            answer = 0;
+            System.out.println(0);
+            return;
         }
-        else{
-            int before = 301;
-            int i=0, maxEnd = 0;;
 
-            while (i<n && before < 1201) {
-                boolean found = false;
-                while (i<n && garden[i].start <= before) {
-                    maxEnd = Math.max(maxEnd, garden[i].end);
-                    i++;
-                    found = true;
-                }
-                if (!found) {
-                    answer = 0;
-                    break;
-                }
-                answer++;
-                before = maxEnd;
-                
+        int before = 301;
+        int i=0, maxEnd = 0;;
+
+        while (before < 1201) {
+            boolean found = false;
+            while (i<n && garden[i].start <= before) {
+                maxEnd = Math.max(maxEnd, garden[i].end);
+                i++;
+                found = true;
             }
-            if (before < 1201) {
-                answer = 0;
+            if (!found) {
+                System.out.println(0);
+                return;
             }
-        }
+            answer++;
+            before = maxEnd;
+            
+        }        
 
         System.out.println(answer);
     }
