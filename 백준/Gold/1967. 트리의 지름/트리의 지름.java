@@ -12,17 +12,17 @@ class Node {
 
 public class Main {
     static ArrayList<Node>[] tree;
-    static boolean[] isVisted;
+    static boolean[] isVisited;
     static int maxDist;
-    static int farestNode;
+    static int farestNode = 1;  //N==1 일때 가장 먼 노드는 1
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         tree = new ArrayList[n+1];
-        isVisted = new boolean[n+1];
+        isVisited = new boolean[n+1];
 
-        for(int i=0; i<=n; i++){
+        for(int i=1; i<=n; i++){
             tree[i] = new ArrayList<>();
         }
 
@@ -38,21 +38,21 @@ public class Main {
         dfs(1, 0);          // 가장 먼 노드 찾기
 
         maxDist = 0;
-        Arrays.fill(isVisted,false);    
+        Arrays.fill(isVisited,false);    
         dfs(farestNode, 0);        // 지름 찾기
 
         System.out.println(maxDist);
     }
 
     public static void dfs(int parent, int distance){
-        isVisted[parent] = true;
+        isVisited[parent] = true;
         if(distance > maxDist){
             maxDist = distance;
             farestNode = parent;
         }
 
         for(Node node : tree[parent]) {
-            if(!isVisted[node.child]) dfs(node.child, distance+node.weight);
+            if(!isVisited[node.child]) dfs(node.child, distance+node.weight);
         }
     }
 }
