@@ -15,7 +15,7 @@ public class Main {
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
                 if (i==j) floyd[i][j] = 0;
-                else floyd[i][j] = INF+1;
+                else floyd[i][j] = INF;
             }
         }
 
@@ -40,7 +40,7 @@ public class Main {
         //출력
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
-                if (floyd[i][j] > INF) System.out.print(0 + " ");
+                if (floyd[i][j] >= INF) System.out.print(0 + " ");
                 else System.out.print(floyd[i][j] + " ");
             }
             System.out.println();
