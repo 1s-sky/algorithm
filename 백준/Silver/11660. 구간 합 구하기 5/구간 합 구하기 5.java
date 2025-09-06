@@ -19,14 +19,7 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             for(int j=1; j<=n; j++){
                 num[i][j] = Integer.parseInt(st.nextToken());
-                if(i==0) sum[i][j] = num[i][j];
-                else sum[i][j] = sum[i-1][j] + num[i][j];
-            }
-        }
-
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=n; j++){
-                sum[i][j] += sum[i][j-1];
+                sum[i][j] = sum[i][j-1] + sum[i-1][j] + num[i][j] - sum[i-1][j-1];
             }
         }
 
